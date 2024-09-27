@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User Form</title>
+    <link rel="stylesheet" href="../../css/doner.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Add User</h2>
+        <form method="post" action="/submit">
+            <div class="input-field">
+                <label for="name">Name</label>
+                <input class="txtinput" type="text" name="name" id="name">
+            </div>
+            <div class="input-field">
+                <label for="email">Email</label>
+                <input class="txtinput" type="email" name="email" id="email">
+            </div>
+            <div class="input-field">
+                <label for="phone">Phone</label>
+                <input class="txtinput" type="text" name="phone" id="phone">
+            </div>
+            <div class="input-field">
+                <label for="blood">Blood Group</label>
+                <input class="txtinput" type="text" name="blood" id="blood">
+            </div>
+            <div class="input-field">
+                <label>Gender</label>
+                <div class="gender-options">
+                    <input class="inbtn" type="radio" name="gender" value="male" id="male" >
+                    <label for="male">Male</label>
+                    <input class="inbtn" type="radio" name="gender" value="female" id="female">
+                    <label for="female">Female</label>
+                    <input class="inbtn" type="radio" name="gender" value="other" id="other">
+                    <label for="other">Other</label>
+                </div>
+            </div>
+            <div class="submit-btn">
+                <button type="submit">Add Donor</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

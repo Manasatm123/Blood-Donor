@@ -1,11 +1,11 @@
 const http = require("http")
 const fs = require("fs")
 const url = require("url")
-const queryString=require("querystring")
-const{MongoClient}=require("mongodb")
+const queryString = require("querystring")
+const { MongoClient } = require("mongodb")
 
 //connect mongodb
-const client=new MongoClient("mongodb://127.0.0.1:27017/")
+const client = new MongoClient("mongodb://127.0.0.1:27017/")
 const PORT = 3000;
 
 
@@ -14,11 +14,11 @@ const app = http.createServer(async (req, res) => {
     console.log(path)
     console.log(req.method)
     //create database
-    const db=client.db("DONOR")
+    const db = client.db("DONOR")
     //create collection 
-    const collection=db.collection("bloodbank")
+    const collection = db.collection("bloodbank")
 
-   
+
 
 
     if (path.pathname == "/") {
@@ -47,56 +47,55 @@ const app = http.createServer(async (req, res) => {
         res.end(fs.readFileSync("../clientside/css/doner.css"))
     }
 
-   else  if (path.pathname="/submit"&&req.method=="POST"){
-        console.log("hai");
-    let body=""
-    req.on("data",(chunks)=>{
-        console.log(chunks);
-        body+=chunks.toString();
-        console.log(body);
-        
-    }) 
-    
-    req.on("end",async()=>{
-        if(body!==null){
-            const formData=queryString.parse(body);
-            console.log(formData);
-            collection.insertOne(formData).then(()=>{
-                console.log("data added")
-            }).catch((error)=>{
-                console.log(error);
-                
-            })
+    else if (path.pathname == "/submit" && req.method == "POST") {
+      
+        let body = ""
+        req.on("data", (chunks) => {
+            console.log(chunks);
+            body += chunks.toString();
+            console.log(body);
 
-            res.writeHead(200,{"Content-Type":"text/html"})
-            res.end(fs.readFileSync("../clientside/index.html"))
-            
-        }
-    });
+        })
+
+        req.on("end", async () => {
+            if (body !== null) {
+                const formData = queryString.parse(body);
+                console.log(formData);
+                collection.insertOne(formData).then(() => {
+                    console.log("data added")
+                }).catch((error) => {
+                    console.log(error);
+
+                })
+
+                res.writeHead(200, { "Content-Type": "text/html" })
+                res.end(fs.readFileSync("../clientside/index.html"))
+
+            }
+        });
     }
 
-    //  if(path.pathname=="/getdonors" && req.method=="GET"){
-    //    console.log("hai");
+    if (path.pathname == "/getdonors" && req.method == "GET") {
        
-    //     res.end("hai")
-    //     // const data=await collection.find().toArray();
-    //     // const json_data=JSON.stringify(data)
 
-    //     // console.log(json_data);
-
-    //     // res.writeHead(200,{"Content-Type":"text/json"})
-    //     // res.end(json_data)
         
-    // }
-else if(path.pathname=="/getdonors" && req.method=="GET"){
-    console.log("hai");
-    
-}
+        const data = await collection.find().toArray();
+        const json_data = JSON.stringify(data)
+
+        console.log(json_data);
+
+        res.writeHead(200, { "Content-Type": "text/json" })
+        res.end(json_data)
+
+    }
 
 
 
 
 })
+
+
+
 
 app.listen(PORT);
 

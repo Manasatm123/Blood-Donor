@@ -9,16 +9,18 @@
 <body>
     <div class="container">
         <div>ADD EMPLOYEE</div>
+        <form method="post" action="/submit">
         <div>
-            <input type="text" placeholder="ID">
-            <input type="text" placeholder="NAME">
-            <input type="text" placeholder="DESIGNATION">
-            <input type="text" placeholder="SALARY">
-            <input type="text" placeholder="EXPERIENCE">
-            <input type="text" placeholder="EMAIL">
-            <input type="text" placeholder="PHONE">
+            <input type="text" placeholder="ID" name="id" id="id">
+            <input type="text" placeholder="NAME" name="name" id="name">
+            <input type="text" placeholder="DESIGNATION" name="designation" id="designation">
+            <input type="text" placeholder="SALARY" name="salary" id="salary">
+            <input type="text" placeholder="EXPERIENCE" name="experience" id="experience">
+            <input type="text" placeholder="EMAIL" name="email" id="email">
+            <input type="text" placeholder="PHONE" name="phone" id="phone">
         </div>
-        <div><button>SAVE</button></div>
+        <div><a href="../pages/index.html"><button>SAVE</button></a></div>
+        </form>
     </div>
 </body>
 </html>

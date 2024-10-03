@@ -4,23 +4,32 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     flex-direction: column; 
     margin: 0;
 }
 
 .card {
-    background-color: #fff;
-    width: 350px;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    /* gap: 40px; */
     margin-top: 20px;
+    display: flex;
+    width: 500px;
+    
 }
 
 .card-image img {
     width: 250px;
     height: auto;
+}
+.one{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-image {
@@ -35,6 +44,7 @@ body {
 
 .employee-details div {
     margin: 10px 0;
+    line-height: 30px;
 }
 
 .card-action {
